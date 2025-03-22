@@ -1,0 +1,168 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+ @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap'); /*navbar-brand */
+ @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap'); /*nav-link */
+ @import url('https://fonts.googleapis.com/css2?family=Tektur:wght@400..900&display=swap');  /*(Login) */
+ @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+.navbar-brand{  font-family: "Kanit", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.nav-link{  font-family: "Cinzel", serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+}
+
+.btn{  font-family: "Tektur", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+}
+
+.home-page{position: fixed;
+font-family: "IBM Plex Mono", monospace;
+  font-weight: 200;
+  font-style: normal;
+  padding-top: 10px;
+
+
+}
+.home-page p{font-size: 20px;
+}
+
+
+/* settings */
+.Mode{font-size: 50px;
+    
+}
+body {
+    padding: 25px;
+    background-color: white;
+    color: black;
+    font-size: 25px;
+  }
+  
+  .dark-mode {
+    background-color: black;
+    color: white;
+  }
+
+  /* calendar */
+
+  h1 {
+    color: #333;
+}
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 900px;
+    margin: auto;
+}
+.month {
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.month h2 {
+    margin: 5px 0;
+    color: #444;
+}
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    text-align: center;
+}
+.day {
+    padding: 5px;
+    font-size: 14px;
+}
+.weekday {
+    font-weight: bold;
+    color: #007bff;
+}
+.empty {
+    visibility: hidden;
+}
+
+
+/* to-do list */
+.container {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    padding-top: 60px;
+}
+
+.todo-input {
+    margin-bottom: 20px;
+}
+
+input {
+    padding: 10px;
+    width: 60%;
+}
+
+button {
+    padding: 10px;
+    background-color: rgb(34, 34, 37);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background: lightgray;
+    padding: 10px;
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+       
+.dark-mode {
+    background-color: #121212;
+    color: white;
+   } */
+button {
+    padding: 10px ;
+    
+    cursor: pointer;
+    font-size: 20pxpx;
+    margin: 10px;
+    background: #007bff;
+    color: white;
+    border-radius: 5px;
+    transition: background 0.3s;
+   }
+
+
+.dark-mode button{
+    background: white;
+    color: black;
+   }
+
+.dark-mode button:hover{
+    background: #ddd;
+   }
+
+   /* footer */
+   

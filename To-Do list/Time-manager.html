@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tektur:wght@400..900&display=swap');
+        /* Default Light Mode */
+
+
+
+
+
+
+        body      {
+                   background-color: white;
+                   color: black;
+                   
+                   font-family: Arial, sans-serif;
+                   transition: background-color 0.3s, color 0.3s;
+                   }
+  
+        .container{text-align: center;
+                   padding-top: 100px;
+                   font-size: 25px;
+                   font-family: "Tektur", sans-serif;
+                   font-optical-sizing: auto;
+                   font-style: normal;
+                   font-variation-settings:
+                   "wdth" 100;
+                   }
+        .input{    height: 60px;
+                   width: 200px;
+                   font-size: 25px;
+
+            
+                  }           
+        .Task{     font-size: 25px;
+                   border-radius: 20px;
+                  }
+         
+       .dark-mode {
+                   background-color: #121212;
+                   color: white;
+                  } */
+           button {
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            transition: background 0.3s;;
+                  }
+                  
+                  
+
+   
+.dark-mode button{
+                   background: white;
+                   color: black;
+                  }
+
+.dark-mode button:hover{
+                   background: #ddd;
+                  }
+
+    </style>
+    <div class="container">
+        <h1>Time Manager</h1>
+        <button id="darkModeBtn"><div class="mode">Dark Mode</div></button>
+
+        <div class="task-form">
+            <input type="text" id="taskName" placeholder="Enter task..." class="input">
+            <input type="datetime-local" id="taskTime" class="input">
+            <button onclick="addTask()" class="Task">Add Task</button>
+            
+        </div>
+        <ul id="taskList"></ul>
+    </div>
+    
+    <script>
+       document.addEventListener("DOMContentLoaded", function () {
+    loadTasks();
+    setupDarkMode();
+});
+
+function addTask() {
+    const taskName = document.getElementById("taskName").value;
+    const taskTime = document.getElementById("taskTime").value;
+    if (!taskName || !taskTime) return;
+
+    const task = { name: taskName, time: taskTime };
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    tasks.push(task);
+    tasks.sort((a, b) => new Date(a.time) - new Date(b.time));
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+
+    displayTasks();
+}
+
+function loadTasks() {
+    displayTasks();
+}
+
+function displayTasks() {
+    const taskList = document.getElementById("taskList");
+    taskList.innerHTML = "";
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+    tasks.forEach((task, index) => {
+        const li = document.createElement("li");
+        li.innerHTML = `${task.name} - ${new Date(task.time).toLocaleString()} 
+                        <button onclick="deleteTask(${index})">Delete</button>`;
+        taskList.appendChild(li);
+    });
+}
+
+function deleteTask(index) {
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    tasks.splice(index, 1);
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    displayTasks();
+}
+
+// Dark Mode Toggle Function
+function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+
+    // Update button text dynamically
+    let btn = document.getElementById("darkModeBtn");
+    if (btn) {
+        btn.innerText = document.body.classList.contains("dark-mode") ? "Light Mode" : "Dark Mode";
+    }
+
+    // Save dark mode preference
+    localStorage.setItem("darkMode", document.body.classList.contains("dark-mode") ? "enabled" : "disabled");
+}
+
+// Function to set up dark mode on page load
+function setupDarkMode() {
+    let darkModeBtn = document.getElementById("darkModeBtn");
+
+    if (!darkModeBtn) {
+        console.error("Dark mode button not found!");
+        return;
+    }
+
+    // Load dark mode setting from localStorage
+    if (localStorage.getItem("darkMode") === "enabled") {
+        document.body.classList.add("dark-mode");
+        darkModeBtn.innerText = "Light Mode";
+    } else {
+        darkModeBtn.innerText = "Dark Mode";
+    }
+
+    // Attach event listener to the button
+    darkModeBtn.addEventListener("click", toggleDarkMode);
+}
+
+    </script>
+</body>
+</html>
