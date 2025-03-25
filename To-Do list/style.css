@@ -24,6 +24,7 @@
       "wdth" 100;
 }
 
+
 .home-page {
     position: relative; /* Change from fixed to relative */
     text-align: center;
@@ -43,6 +44,7 @@
     font-size: 18px;
 }
 
+/* Responsive Fix */
 @media (max-width: 768px) {
     .container {
         width: 90%;
@@ -62,7 +64,6 @@
         margin-top: 10px;
     }
 }
-
 /* settings */
 .Mode{font-size: 50px;
     
